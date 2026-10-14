@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens. Light is the default; dark applies from the OS setting
+   unless the visitor picked a theme with the toggle (data-theme on <html>). */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f4f6fa;
+  --fg: #0f1b33;
+  --muted: #566178;
+  --border: #e1e6ef;
+  --accent: #096bbf;
+  --accent-soft: #e6effa;
+  --hero-bg: #f2f4f8;
+  --band: #13307a;
+  --band-2: #0b1f57;
+  --band-muted: #c3d1f2;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a2030;
+    --bg-alt: #20283a;
+    --fg: #d6dce8;
+    --muted: #9da8bd;
+    --border: #343e54;
+    --accent: #86b2f5;
+    --accent-soft: #26345a;
+    --hero-bg: #1d2436;
+    --band: #24366e;
+    --band-2: #1b2a58;
+    --band-muted: #bfcbea;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a2030;
+  --bg-alt: #20283a;
+  --fg: #d6dce8;
+  --muted: #9da8bd;
+  --border: #343e54;
+  --accent: #86b2f5;
+  --accent-soft: #26345a;
+  --hero-bg: #1d2436;
+  --band: #24366e;
+  --band-2: #1b2a58;
+  --band-muted: #bfcbea;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-fg font-sans leading-relaxed antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent rounded;
+  }
+}
+
+/* Smooth color fade, only while the theme toggle is switching */
+html.theming body,
+html.theming body * {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease !important;
+}
+
+/* Logo: the dark-mode version has light "WEB STUDIO" text */
+.logo-dark {
+  display: none;
+}
+:root[data-theme="dark"] .logo-light {
+  display: none;
+}
+:root[data-theme="dark"] .logo-dark {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .logo-dark {
+    display: block;
+  }
+}
+
+/* Hero load sequence: each line rises in a little after the one before */
+.stagger > * {
+  @apply animate-rise;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 0.18s;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+/* "Taking new projects" dot */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 125, 28, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgba(251, 125, 28, 0);
+  }
+}
+.status-dot {
+  animation: pulse 2.4s ease-out infinite;
+}
+
+/* Hero diagonal, matching the DAN banner */
+.diag,
+.gust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.diag-blue {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1e7fd8, #13307a 70%);
+  clip-path: polygon(100% 0, 100% 100%, 52% 100%, 78% 0);
+}
+.diag-edge {
+  position: absolute;
+  inset: 0;
+  background: #fb7d1c;
+  opacity: 0.9;
+  clip-path: polygon(78% 0, 78.6% 0, 52.6% 100%, 52% 100%);
+}
+.gust {
+  clip-path: polygon(100% 0, 100% 100%, 52% 100%, 78% 0);
+  overflow: hidden;
+}
+@media (max-width: 860px) {
+  .diag-blue {
+    clip-path: polygon(100% 45%, 100% 100%, 0 100%, 0 92%);
+  }
+  .diag-edge {
+    display: none;
+  }
+}
+
+/* Wind: light moving across the blue panel in three depths. Far streaks are thin, faint and slow;
+   a closer group of softer bands passes together every so often. Soft light patches drift behind them.
+   Transforms and opacity only, so it costs nothing to load and runs on the graphics card. */
+.gust {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 100% 100%, 52% 100%, 78% 0);
+  overflow: hidden;
+}
+.gust .cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(120, 175, 255, 0.3),
+    rgba(120, 175, 255, 0)
+  );
+  will-change: transform;
+  animation: cloud 38s ease-in-out infinite alternate;
+}
+.gust .c1 {
+  width: 520px;
+  height: 340px;
+  right: -120px;
+  top: -60px;
+}
+.gust .c2 {
+  width: 420px;
+  height: 300px;
+  right: 12%;
+  top: 40%;
+  animation-duration: 46s;
+  animation-delay: -12s;
+  background: radial-gradient(
+    closest-side,
+    rgba(90, 150, 240, 0.26),
+    rgba(90, 150, 240, 0)
+  );
+}
+.gust .c3 {
+  width: 360px;
+  height: 260px;
+  right: -60px;
+  bottom: -80px;
+  animation-duration: 52s;
+  animation-delay: -24s;
+  background: radial-gradient(
+    closest-side,
+    rgba(251, 125, 28, 0.12),
+    rgba(251, 125, 28, 0)
+  );
+}
+@keyframes cloud {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-120px, 30px) scale(1.12);
+  }
+}
+
+.gust span {
+  position: absolute;
+  right: -12%;
+  border-radius: 999px;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: blur(1.2px);
+}
+/* tapered at both ends so each line reads as moving air rather than a point of light */
+.gust .far {
+  height: 2px;
+  width: 220px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.22) 45%,
+    rgba(255, 255, 255, 0.22) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: wind 34s linear infinite;
+}
+.gust .f1 {
+  top: 12%;
+  animation-delay: -2s;
+}
+.gust .f2 {
+  top: 36%;
+  animation-delay: -20s;
+  animation-duration: 40s;
+}
+.gust .f3 {
+  top: 58%;
+  animation-delay: -11s;
+  animation-duration: 37s;
+}
+.gust .f4 {
+  top: 88%;
+  animation-delay: -27s;
+}
+.gust .mid {
+  height: 3px;
+  width: 320px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.32) 40%,
+    rgba(255, 255, 255, 0.32) 65%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: wind 26s ease-in-out infinite;
+}
+.gust .m1 {
+  top: 20%;
+  animation-delay: -6s;
+}
+.gust .m2 {
+  top: 70%;
+  animation-delay: -17s;
+  animation-duration: 30s;
+}
+.gust .m3 {
+  top: 45%;
+  animation-delay: -2s;
+  animation-duration: 28s;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 125, 28, 0),
+    rgba(251, 125, 28, 0.35) 45%,
+    rgba(251, 125, 28, 0.35) 60%,
+    rgba(251, 125, 28, 0)
+  );
+}
+/* the gust: three wider, softer bands that pass together, then calm */
+.gust .near {
+  height: 5px;
+  width: 420px;
+  filter: blur(2px);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0.3) 65%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: gust 22s cubic-bezier(0.45, 0, 0.3, 1) infinite;
+}
+.gust .n1 {
+  top: 26%;
+  animation-delay: 1.2s;
+}
+.gust .n2 {
+  top: 31%;
+  width: 300px;
+  height: 3px;
+  animation-delay: 2s;
+}
+.gust .n3 {
+  top: 80%;
+  width: 360px;
+  animation-delay: 2.8s;
+}
+/* air moves in a gentle wave along the diagonal instead of a straight line */
+@keyframes wind {
+  0% {
+    transform: rotate(-14deg) translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    transform: rotate(-14deg) translate(-18vw, -6px);
+  }
+  55% {
+    transform: rotate(-14deg) translate(-34vw, 5px);
+  }
+  80% {
+    transform: rotate(-14deg) translate(-50vw, -4px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(-14deg) translate(-64vw, 2px);
+    opacity: 0;
+  }
+}
+@keyframes gust {
+  0% {
+    transform: rotate(-14deg) translate(0, 0) scaleX(0.7);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  35% {
+    transform: rotate(-14deg) translate(-24vw, -8px) scaleX(1.15);
+  }
+  60% {
+    transform: rotate(-14deg) translate(-44vw, 6px) scaleX(1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: rotate(-14deg) translate(-54vw, 0) scaleX(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-14deg) translate(-54vw, 0) scaleX(0.9);
+    opacity: 0;
+  }
+}
+@media (max-width: 860px) {
+  .gust {
+    clip-path: polygon(100% 45%, 100% 100%, 0 100%, 0 92%);
+  }
+  .gust .far,
+  .gust .m2,
+  .gust .c2 {
+    display: none;
+  }
+}
+
+/* Screenshots in the hero float very slightly, like they are riding the same air */
+@keyframes float {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -7px;
+  }
+}
+.win {
+  animation:
+    rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    float 6s 1s ease-in-out infinite alternate;
+}
+.win-2 {
+  animation-delay: 0.32s, 1.6s;
+  animation-duration: 0.7s, 7s;
+}
+.win-3 {
+  animation-delay: 0.44s, 0.8s;
+  animation-duration: 0.7s, 5.5s;
+}
+
+/* Screenshot viewer size */
+.viewer {
+  width: min(1200px, 94vw);
+  max-height: 94vh;
+}
+.viewer-body {
+  max-height: calc(94vh - 140px);
+}
+dialog::backdrop {
+  background: rgb(5 10 25 / 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .gust {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
