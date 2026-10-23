@@ -1,4 +1,4 @@
-import { aiNote, billing, founder, services, steps, workIntro, clients } from "@/data/content";
+import { aiNote, founder, services, steps, workIntro, clients } from "@/data/content";
 import ClientWork from "./ClientWork";
 
 function Heading({ id, eyebrow, title, sub }: { id: string; eyebrow: string; title: string; sub?: string }) {
@@ -20,8 +20,8 @@ export function Services() {
         <Heading
           id="services-h"
           eyebrow="Services"
-          title="What DAN Web Studio does"
-          sub="From a new company website to an internal tool or an AI feature, with support after launch."
+          title="How DAN Web Studio can help"
+          sub="Projects range from a first company website to custom software for an established business. Most start with a specific need, like a site that's hard to update or a process that lives in spreadsheets and email."
         />
         <div className="border-t border-line">
           {services.map((s) => (
@@ -51,8 +51,8 @@ export function Process() {
         <Heading
           id="process-h"
           eyebrow="How it works"
-          title="A clear process from first call to launch"
-          sub="You always know what is being built, how long it will take, and what it costs."
+          title="How a project works"
+          sub="Before development begins, you'll have an outline of the proposed work, priorities, timeline, and estimated cost."
         />
         {/* One line with four stops: horizontal on wide screens, vertical on phones */}
         <ol className="relative grid gap-6 pl-9 before:absolute before:bottom-2 before:left-2 before:top-2 before:w-0.5 before:bg-line md:grid-cols-4 md:pl-0 md:pt-0 md:before:bottom-auto md:before:left-2 md:before:right-2 md:before:top-2 md:before:h-0.5 md:before:w-auto">
@@ -70,9 +70,6 @@ export function Process() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 max-w-[66ch]">
-          <b>{billing.lead}</b> {billing.body}
-        </p>
       </div>
     </section>
   );
@@ -82,7 +79,7 @@ export function Work() {
   return (
     <section id="work" aria-labelledby="work-h" className="py-16">
       <div className="mx-auto max-w-page px-5">
-        <Heading id="work-h" eyebrow="Past work" title="Sites built" sub={workIntro} />
+        <Heading id="work-h" eyebrow="Past work" title="Selected client work" sub={workIntro} />
         <ClientWork clients={clients} />
       </div>
     </section>
@@ -102,7 +99,7 @@ export function About() {
           </figcaption>
         </figure>
         <div>
-          <Heading id="about-h" eyebrow="About" title="Meet the founder" />
+          <Heading id="about-h" eyebrow="About" title="About DAN Web Studio" />
           {founder.paragraphs.map((p) => (
             <p key={p.slice(0, 20)} className="mb-3 max-w-measure text-lead">
               {p}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { projectTypes, site } from "@/data/content";
+import { budgetRanges, projectTypes, site } from "@/data/content";
 
 // On Netlify, Netlify Forms receives submissions (turn on form detection in the Netlify dashboard).
 // To use another service instead, such as Formspree, set NEXT_PUBLIC_FORM_ENDPOINT when building.
@@ -25,6 +25,7 @@ export default function ContactForm() {
       `Email: ${d.get("email")}`,
       d.get("company") ? `Company: ${d.get("company")}` : null,
       `Need: ${d.get("project_type")}`,
+      d.get("budget") ? `Budget: ${d.get("budget")}` : null,
       "",
       String(d.get("message")),
     ]
@@ -108,6 +109,17 @@ export default function ContactForm() {
         <select name="project_type" className={field}>
           {projectTypes.map((t) => (
             <option key={t}>{t}</option>
+          ))}
+        </select>
+      </label>
+      <label className={label}>
+        <span>
+          Estimated project budget <span className="font-medium text-muted">(optional)</span>
+        </span>
+        <select name="budget" defaultValue="" className={field}>
+          <option value="">Select a budget range</option>
+          {budgetRanges.map((b) => (
+            <option key={b}>{b}</option>
           ))}
         </select>
       </label>

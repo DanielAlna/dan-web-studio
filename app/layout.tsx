@@ -9,9 +9,9 @@ import "./globals.css";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 export const metadata: Metadata = {
-  title: "DAN Web Studio",
+  title: "DAN Web Studio | Custom Websites and Web Applications, Columbia, MD",
   description:
-    "DAN Web Studio builds WordPress sites, React and Next.js apps, and AI features for businesses. Based in Columbia, Maryland.",
+    "DAN Web Studio is a web and software development studio in Columbia, Maryland. We build custom WordPress websites, React and Next.js web applications, and internal business tools.",
   icons: { icon: "/favicon.png", apple: "/apple-touch-icon.png" },
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#13307A" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="DAN Web Studio" />
-        <meta property="og:description" content="Websites, web apps, and AI features for growing businesses. Columbia, Maryland." />
+        <meta property="og:description" content="Custom websites and software built around your business. A web and software development studio in Columbia, Maryland." />
         <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />

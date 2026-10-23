@@ -17,53 +17,48 @@ export const nav = [
 
 export const hero = {
   status: "Columbia, Maryland · Taking new projects",
-  title: "Websites and web apps,",
-  titleAccent: "built with care.",
-  offer: ["Custom Websites", "Web Apps", "AI Development"],
+  title: "Custom websites and software",
+  titleAccent: "built around your business.",
+  offer: ["Websites", "Web Apps", "Internal Tools"],
   intro:
-    "DAN Web Studio builds WordPress sites, React and Next.js apps, and AI features for businesses. AI tools speed up the work, and every change is reviewed by hand before it goes live.",
+    "Websites, applications, and internal tools that solve real business challenges, whether you're launching something new or improving what you already have. Behind every project is more than a decade of hands-on software engineering experience.",
 };
 
 export const services = [
   {
-    title: "Custom websites",
-    body: "Company sites, brand sites, and online stores on WordPress. Custom themes and blocks, so your team can edit content without breaking the design.",
-    stack: ["WordPress", "WooCommerce", "Gutenberg"],
+    title: "Custom websites and WordPress",
+    body: "A new company website, or a WordPress site that's become hard to manage or extend. We build custom themes, blocks, and functionality around your business, so your team can update content without calling a developer for every change.",
+    stack: ["WordPress", "WooCommerce", "Custom functionality"],
   },
   {
-    title: "Web apps",
-    body: "Dashboards, portals, and internal tools built with React and Next.js. Fast, secure, and ready to grow with your business.",
-    stack: ["React", "Next.js", "TypeScript"],
+    title: "Web applications and internal tools",
+    body: "When off-the-shelf software doesn't fit the job, a custom application often will: internal dashboards, employee portals, approval workflows, and tools that connect existing systems. Our experience covers both production business applications and early-stage products.",
+    stack: ["React", "Next.js", "APIs"],
   },
   {
-    title: "AI development",
-    body: "AI features for your site or tools, like an assistant that answers questions from your own content, or automations that save your team time.",
-    stack: ["AI assistants", "Automation", "Integrations"],
+    title: "Practical AI guidance",
+    body: "Not sure whether AI belongs in your business? We'll look at how your team works and give you an honest view of where it could help and where a simpler solution would do. Any next steps are scoped with you.",
+    stack: ["AI assessment", "AI-assisted development"],
   },
   {
-    title: "Care and updates",
-    body: "Updates, speed and security fixes, and content changes for sites that are already live. Help when you need it, without a long contract.",
-    stack: ["Maintenance", "Speed", "Security"],
+    title: "Maintenance and improvements",
+    body: "Updates, bug fixes, performance and security improvements, and new features for websites and applications that are already live. We can set up ongoing maintenance around what your project needs.",
+    stack: ["Updates", "Fixes", "New features"],
   },
 ];
 
 export const aiNote = {
   label: "How the work gets done",
-  title: "AI-assisted, reviewed by a person",
-  body: "Tools like Claude Code and Cursor handle repetitive work, so more of your budget goes to the parts that matter. Every change is checked by hand before it reaches your site.",
+  title: "Experienced engineering, supported by modern tools",
+  body: "AI-assisted development tools help with parts of the work. The architecture, code review, testing, and technical decisions rely on experienced engineering judgment.",
 };
 
 export const steps = [
-  { title: "Talk", body: "A short call about your goals, your users, and what you have today." },
-  { title: "Plan", body: "A written scope and a time estimate, so there are no surprises." },
-  { title: "Build", body: "Regular updates and a preview link, so you can see progress and give feedback." },
-  { title: "Launch and support", body: "Go live, then ongoing updates and fixes when you need them." },
+  { title: "Talk", body: "We learn about your business, your users, and what isn't working today." },
+  { title: "Plan", body: "Together we agree on a practical scope, the technical approach, and priorities, with simpler options considered where they make sense." },
+  { title: "Build", body: "Development and testing, with regular progress updates and room for your feedback along the way." },
+  { title: "Launch and support", body: "After launch, you choose what comes next: updates, maintenance, or further development." },
 ];
-
-export const billing = {
-  lead: "Billed by the hour, with an estimate up front.",
-  body: "You pay for the time the work takes, and you get a clear breakdown with every invoice.",
-};
 
 export type Client = {
   id: string; // image files are /img/{id}-1.jpg, /img/{id}-2.jpg, ...
@@ -76,41 +71,51 @@ export type Client = {
 
 export const clients: Client[] = [
   { id: "elbit", name: "Elbit Systems", kind: "mockup", shots: 1,
-    body: "Corporate website for an international defense technology company, with investor relations, press releases, and careers." },
+    body: "Corporate website for an international defense technology company, with sections for its lines of business, investor relations, press releases, and careers." },
   { id: "wizer", name: "Wizer", kind: "page", shots: 3,
-    body: "Marketing website for a consumer research company, with product pages, a case study, and lead forms." },
+    body: "Marketing website for an AI-based consumer research company, with a product overview, a customer case study, and prompts to contact the sales team." },
   { id: "logon", name: "Log-On", kind: "page", shots: 4,
-    body: "Careers site for a software company, with job search, open positions, and an application form." },
+    body: "Hebrew careers site for a software company, with job listings by category, career articles, and an online application form." },
   { id: "naturalformula", name: "Natural Formula", kind: "mockup", shots: 1,
-    body: "Brand website for a professional hair care line, with a product catalog, how-to guides, and a country selector." },
+    body: "Brand website for a professional hair care line, with a product catalog, straightening and curl guides, and a country selector." },
   { id: "artjudaica", name: "Art Judaica", kind: "page", shots: 3,
-    body: "Online store for Judaica gifts sold abroad, with wholesale accounts and a supplier ordering system." },
+    body: "Wholesale-only online store for Judaica gifts, with trade registration and sign-in, a large category menu, and published ordering and shipping terms." },
   { id: "amazingday", name: "Amazing Day", kind: "mockup", shots: 1,
-    body: "Store for personalized planners, where customers design their own planner online." },
+    body: "Hebrew online store for personalized planners, where customers choose a planner and design their own before ordering." },
   { id: "sano", name: "Sano", kind: "page", shots: 3,
-    body: "Brand site for a large household products company, with product categories, a blog, and promotions." },
+    body: "Hebrew brand website for a major household products company, with product categories, articles and how-to videos, and a language switcher." },
   { id: "teka", name: "Teka Israel", kind: "mockup", shots: 1,
-    body: "Website for an international kitchen appliance brand, with a full-screen slider and product categories." },
+    body: "Hebrew website for an international kitchen appliance brand, built around full-screen product imagery." },
   { id: "careline", name: "Careline", kind: "page", shots: 3,
-    body: "Online store for cosmetics and fragrance brands, with a large catalog and product listings." },
+    body: "Hebrew online store for cosmetics and fragrance brands, with brand menus, sale pricing, and a shopping cart." },
 ];
 
 export const workIntro =
-  "A selection of websites built for clients, from defense technology to consumer brands and online stores. Click a site to see more screenshots.";
+  "Selected website development projects spanning corporate websites, consumer brands, and online stores. Explore each project to see more of the work.";
 
 export const founder = {
   name: "Daniel Al Nafutshy",
   role: "Founder",
   paragraphs: [
-    "Daniel founded DAN Web Studio in Israel, where it built websites for companies like Elbit Systems and Wizer, and brought the business with him to Columbia, Maryland. He has more than ten years of experience as a full stack developer, including engineering roles at Log-On and AppsFlyer.",
-    "He cares about how a site feels to use, down to the small details. Every project starts with a conversation with him, and he stays involved through launch.",
+    "DAN Web Studio began in Israel and now operates from Columbia, Maryland. Founder Daniel Al Nafutshy brings more than a decade of software engineering experience, from commercial websites for established brands to production applications and technical leadership.",
+    "That engineering depth is paired with experience in marketing and business strategy, so we plan each project around who will use the site or tool, how people will find it, and what it needs to accomplish.",
   ],
 };
 
 export const projectTypes = [
   "A new website",
   "A web app or internal tool",
-  "An AI feature or automation",
   "Updates to an existing site",
   "Not sure yet",
+];
+
+// Self-reported ranges to understand a prospect's budget. Not prices or packages.
+export const budgetRanges = [
+  "$500–$1,500",
+  "$1,500–$3,000",
+  "$3,000–$5,000",
+  "$5,000–$10,000",
+  "$10,000–$25,000",
+  "$25,000+",
+  "I'm not sure yet",
 ];

@@ -13,7 +13,7 @@ export default function ClosingFooter() {
           <h2 id="contact-h" className="mb-3 text-section font-extrabold tracking-tight text-white">
             Have a project in mind?
           </h2>
-          <p>Share a little about what you need and when you need it.</p>
+          <p>Tell us what you&apos;re working on, whether it&apos;s a new website, a custom application, or an existing system that needs attention. A rough idea is enough to start the conversation.</p>
         </div>
 
         <div className="md:col-start-2 md:row-span-2 md:row-start-1">
@@ -24,7 +24,7 @@ export default function ClosingFooter() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element -- logo */}
             <img src="/img/logo-white.png" alt="DAN Web Studio" width={161} height={48} className="h-12 w-auto" />
-            <p className="mt-3.5 max-w-[34ch] text-small">Websites, web apps, and AI features for growing businesses.</p>
+            <p className="mt-3.5 max-w-[34ch] text-small">Custom websites, web applications, and internal tools for growing businesses.</p>
           </div>
           <div className="grid max-w-sm grid-cols-2 gap-6 text-small">
             <nav aria-label="Footer">
